@@ -33,19 +33,24 @@ class _VacinasState extends State<Vacinas> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Minhas Vacinas'),
-        ),
-        body: VacinasGridView(
-          vacin: List.from(
-            vacinaList.map(
-              (Vacin vacin) => VacinaImageCard(
-                image: vacin.image,
-                onTap: () => openDetails(vacin),
-                vacin: (vacin),
-              ),
+      appBar: AppBar(
+        title: const Text('Minhas Vacinas'),
+      ),
+      body: VacinasGridView(
+        vacin: List.from(
+          vacinaList.map(
+            (Vacin vacin) => VacinaImageCard(
+              image: vacin.image,
+              onTap: () => openDetails(vacin),
+              vacin: (vacin),
             ),
           ),
-        ));
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => {}, 
+        child: Icon(Icons.add),
+      ),
+    );
   }
 }
