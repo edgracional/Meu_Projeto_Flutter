@@ -13,7 +13,7 @@ class VacinasGridView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(12),
       child: GridView.count(
-        crossAxisCount: 2,
+        crossAxisCount: 1,
         mainAxisSpacing: 35,
         crossAxisSpacing: 35,
         childAspectRatio: 3 / 4,

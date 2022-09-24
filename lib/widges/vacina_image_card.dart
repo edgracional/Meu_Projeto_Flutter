@@ -29,7 +29,6 @@ class VacinaImageCard extends StatelessWidget {
               alignment: Alignment.topRight,
               decoration: const BoxDecoration(),
               child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(30)),
                 child: Container(
                   width: 26,
                   height: 26,

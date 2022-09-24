@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:minhas_vacinas/pages/update_vacina.dart';
 import '../repositories/vacinas_reposit.dart';
 import '../pages/vacinas.dart';
 import '../models/vacin.dart';
@@ -11,14 +12,14 @@ class VacinaDetailsPage extends StatefulWidget {
     required this.vacin,
   }) : super(key: key);
 
+  
   @override
-  State<VacinaDetailsPage> createState() => _VacinaDetailsPageState();
+  _VacinaDetailsPageState createState() => _VacinaDetailsPageState();
 }
 
 class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
-  var selected = 1;
-  final dropdownList = <int>[1, 2, 3, 4, 5];
-  var isChecked = false;
+
+  
   // updateScreen() {
   //   setState(() {
   //     ScaffoldMessenger.of(context).showSnackBar(
@@ -35,8 +36,40 @@ class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
 
   ValueNotifier<bool> showDescription = ValueNotifier(true);
 
+  /* validações futuras 
+   final Stream<QuerySnapshot> studentsStream =
+      FirebaseFirestore.instance.collection('students').snapshots();
+
+  // For Deleting User
+  CollectionReference students =
+      FirebaseFirestore.instance.collection('students');
+  Future<void> deleteUser(id) {
+    // print("User Deleted $id");
+    return students
+        .doc(id)
+        .delete()
+        .then((value) => print('User Deleted'))
+        .catchError((error) => print('Failed to Delete user: $error'));
+  }*/
+
+
+  //final Stream<QuerySnapshot> studentsStream =
+     // FirebaseFirestore.instance.collection('students').snapshots();
+
+  // For Deleting User
+ // CollectionReference students =
+     // FirebaseFirestore.instance.collection('vacinas');
+  Future<void> deleteUser(id) {
+    // print("User Deleted $id");
+    return Vacinas
+        .doc(id)
+        .delete()
+        .then((value) => print('User Deleted'))
+        .catchError((error) => print('Failed to Delete user: $error'));
+
   @override
   Widget build(BuildContext context) {
+    var storedocs;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -47,14 +80,14 @@ class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
       ),
       body: Stack(
         children: [
-          SizedBox(
+          /*  SizedBox(
             width: double.infinity,
             child: Image.asset(
               widget.vacin.image,
               fit: BoxFit.fitWidth,
               alignment: Alignment.topCenter,
             ),
-          ),
+          ),*/
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: ListView(
@@ -67,68 +100,128 @@ class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
                     child: Text(widget.vacin.description),
                   ),
                 ),
-                const SizedBox(height: 10),
+
                 Card(
-                  child: Column(
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Table(
+                border: TableBorder.all(),
+                columnWidths: const <int, TableColumnWidth>{
+                  1: FixedColumnWidth(140),
+                },
+                defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                children: [
+                  TableRow(
                     children: [
-                      ListTile(
-                        leading: const Icon(Icons.calendar_today),
-                        title: Text(widget.vacin.year.toString()),
-                      ),
-                      Card(
-                        child: Column(
-                          children: [
-                            Checkbox(
-                              value: isChecked,
-                              onChanged: (val) {
-                                setState(() {
-                                  if (val != null) isChecked = val;
-                                });
-                              },
-                            ),
-                            DropdownButton(
-                              value: selected,
-                              icon: Icon(Icons.arrow_downward),
-                              iconSize: 25,
+                      TableCell(
+                        child: Container(
+                          color: Colors.greenAccent,
+                          child: Center(
+                            child: Text(
+                              'Nome',
                               style: TextStyle(
-                                color: Colors.indigo[900],
-                                fontSize: 30,
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
                               ),
-                              underline: Container(
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    bottom: BorderSide(
-                                      color: Colors.black,
-                                      width: 2,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              items: dropdownList
-                                  .map((e) => DropdownMenuItem(
-                                      value: e, child: Text(e.toString())))
-                                  .toList(),
-                              onChanged: (int? val) {
-                                setState(() {
-                                  if (val != null) selected = val;
-                                });
-                              },
                             ),
-                          ],
+                          ),
+                        ),
+                      ),
+                      TableCell(
+                        child: Container(
+                          color: Colors.greenAccent,
+                          child: Center(
+                            child: Text(
+                              'Marca',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      TableCell(
+                        child: Container(
+                          color: Colors.greenAccent,
+                          child: Center(
+                            child: Text(
+                              'Action',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ],
                   ),
+                  for (var i = 0; i < storedocs.length; i++) ...[
+                    TableRow(
+                      children: [
+                        TableCell(
+                          child: Center(
+                              child: Text(storedocs[i]['nome'],
+                                  style: TextStyle(fontSize: 18.0))),
+                        ),
+                        TableCell(
+                          child: Center(
+                              child: Text(storedocs[i]['dose'],
+                                  style: TextStyle(fontSize: 18.0))),
+                        ),
+                        TableCell(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                onPressed: () => {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => UpdateVacinaPage(
+                                          id: storedocs[i]['id']),
+                                    ),
+                                  )
+                                },
+                                icon: Icon(
+                                  Icons.edit,
+                                  color: Colors.orange,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () =>
+                                    {deleteUser(storedocs[i]['id'])},
+                                icon: Icon(
+                                  Icons.delete,
+                                  color: Colors.red,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ],
+              ),
+                  ),
                 )
+                ),
               ],
-            ),
           ),
-        ],
-      ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () => {},
-      //   child: const Icon(Icons.add_comment_rounded),
-      // ),
-    );
-  }
-}
+          ),
+        ]
+      
+  ),
+  
+  );
+  }}
+  
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }}
