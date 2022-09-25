@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import '../repositories/vacinas_reposit.dart';
 
-import '../pages/vacinas.dart';
 import '../models/vacin.dart';
 
 class VacinaRegisterPage extends StatefulWidget {
@@ -89,14 +87,14 @@ class _VacinaRegisterPageState extends State<VacinaRegisterPage> {
                             ),
                             DropdownButton(
                               value: selected,
-                              icon: Icon(Icons.arrow_downward),
+                              icon: const Icon(Icons.arrow_downward),
                               iconSize: 25,
                               style: TextStyle(
                                 color: Colors.indigo[900],
                                 fontSize: 30,
                               ),
                               underline: Container(
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   border: Border(
                                     bottom: BorderSide(
                                       color: Colors.black,

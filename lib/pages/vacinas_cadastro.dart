@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AddVacinaPage extends StatefulWidget {
-  AddVacinaPage({Key? key}) : super(key: key);
+  const AddVacinaPage({Key? key}) : super(key: key);
 
   @override
   _AddVacinaPageState createState() => _AddVacinaPageState();
@@ -49,19 +49,19 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Vacina"),
+        title: const Text("Add Vacina"),
       ),
       body: Form(
         key: _formKey,
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
           child: ListView(
             children: [
               Container(
-                margin: EdgeInsets.symmetric(vertical: 10.0),
+                margin: const EdgeInsets.symmetric(vertical: 10.0),
                 child: TextFormField(
                   autofocus: false,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Name: ',
                     labelStyle: TextStyle(fontSize: 20.0),
                     border: OutlineInputBorder(),
@@ -78,10 +78,10 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 10.0),
+                margin: const EdgeInsets.symmetric(vertical: 10.0),
                 child: TextFormField(
                   autofocus: false,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Marca: ',
                     labelStyle: TextStyle(fontSize: 20.0),
                     border: OutlineInputBorder(),
@@ -100,11 +100,11 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 10.0),
+                margin: const EdgeInsets.symmetric(vertical: 10.0),
                 child: TextFormField(
                   autofocus: false,
                   obscureText: true,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Doses: ',
                     labelStyle: TextStyle(fontSize: 20.0),
                     border: OutlineInputBorder(),
@@ -120,38 +120,36 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
                   },
                 ),
               ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        // Validate returns true if the form is valid, otherwise false.
-                        if (_formKey.currentState!.validate()) {
-                          setState(() {
-                            nome = nomeController.text;
-                            marca = marcaController.text;
-                            doses = dosesController.text;
-                            //addUser();
-                            clearText();
-                          });
-                        }
-                      },
-                      child: Text(
-                        'Register',
-                        style: TextStyle(fontSize: 18.0),
-                      ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      // Validate returns true if the form is valid, otherwise false.
+                      if (_formKey.currentState!.validate()) {
+                        setState(() {
+                          nome = nomeController.text;
+                          marca = marcaController.text;
+                          doses = dosesController.text;
+                          //addUser();
+                          clearText();
+                        });
+                      }
+                    },
+                    child: const Text(
+                      'Register',
+                      style: TextStyle(fontSize: 18.0),
                     ),
-                    ElevatedButton(
-                      onPressed: () => {clearText()},
-                      child: Text(
-                        'Reset',
-                        style: TextStyle(fontSize: 18.0),
-                      ),
-                      style: ElevatedButton.styleFrom(primary: Colors.blueGrey),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => {clearText()},
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.blueGrey),
+                    child: const Text(
+                      'Reset',
+                      style: TextStyle(fontSize: 18.0),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               )
             ],
           ),

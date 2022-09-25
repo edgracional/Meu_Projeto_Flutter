@@ -34,8 +34,8 @@ class VacinaImageCard extends StatelessWidget {
                   height: 26,
                   alignment: Alignment.center,
                   color: Colors.black87,
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 1, left: 1),
+                  child: const Padding(
+                    padding: EdgeInsets.only(bottom: 1, left: 1),
                   ),
                 ),
               ),
