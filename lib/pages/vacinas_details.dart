@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:minhas_vacinas/pages/update_vacina.dart';
 import '../pages/vacinas.dart';
 import '../models/vacin.dart';
 
@@ -175,21 +174,6 @@ class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              IconButton(
-                                onPressed: () => {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => UpdateVacinaPage(
-                                          id: storedocs[i]['id']),
-                                    ),
-                                  )
-                                },
-                                icon: const Icon(
-                                  Icons.edit,
-                                  color: Colors.orange,
-                                ),
-                              ),
                               IconButton(
                                 onPressed: () =>
                                     {deleteUser(storedocs[i]['id'])},
