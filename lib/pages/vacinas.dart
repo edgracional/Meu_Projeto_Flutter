@@ -53,7 +53,7 @@ class _VacinasState extends State<Vacinas> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: ()  {
           Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => AddVacinaPage()),
+            MaterialPageRoute(builder: (context) => const AddVacinaPage()),
           );
         },
         backgroundColor: Colors.deepPurple,
