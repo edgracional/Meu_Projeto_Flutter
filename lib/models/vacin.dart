@@ -15,8 +15,4 @@ class Vacin {
     required this.description,
     required this.year,
   });
-
-  
-
-
 }

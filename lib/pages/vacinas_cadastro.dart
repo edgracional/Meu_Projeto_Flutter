@@ -79,7 +79,34 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
               ),
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 10.0),
-                child: TextFormField(
+                child: PopupMenuButton(
+                  icon: Icon(Icons.more_vert),
+                  itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+                    const PopupMenuItem(
+                      child: ListTile(
+                        leading: Icon(Icons.add),
+                        title: Text('Item 1'),
+                      ),
+                    ),
+                    const PopupMenuItem(
+                      child: ListTile(
+                        leading: Icon(Icons.anchor),
+                        title: Text('Item 2'),
+                      ),
+                    ),
+                    const PopupMenuItem(
+                      child: ListTile(
+                        leading: Icon(Icons.article),
+                        title: Text('Item 3'),
+                      ),
+                    ),
+                    const PopupMenuDivider(),
+                    const PopupMenuItem(child: Text('Item A')),
+                    const PopupMenuItem(child: Text('Item B')),
+                  ],
+                ),
+              ),
+                /*child: TextFormField(
                   autofocus: false,
                   decoration: const InputDecoration(
                     labelText: 'Marca: ',
@@ -98,7 +125,7 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
                     return null;
                   },
                 ),
-              ),
+              ),*/
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 10.0),
                 child: TextFormField(
@@ -111,6 +138,7 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
                     errorStyle:
                         TextStyle(color: Colors.redAccent, fontSize: 15),
                   ),
+                  keyboardType: TextInputType.number,
                   controller: dosesController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
