@@ -11,7 +11,7 @@ class MinhasVacinas extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      home: Vacinas(),
+      home: const Vacinas(),
     );
   }
 }

@@ -5,9 +5,6 @@ import 'package:minhas_vacinas/pages/vacinas_details.dart';
 import 'package:minhas_vacinas/repositories/vacinas_reposit.dart';
 import 'package:minhas_vacinas/widges/vacina_image_card.dart';
 import 'package:minhas_vacinas/widges/vacinas_grid_view.dart';
-import '../pages/vacinas_register.dart';
-import '../models/vacin.dart';
-import '../repositories/vacinas_reposit.dart';
 
 class Vacinas extends StatefulWidget {
   const Vacinas({Key? key}) : super(key: key);
@@ -56,11 +53,13 @@ class _VacinasState extends State<Vacinas> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: ()  {
           Navigator.of(context).push(
+
             MaterialPageRoute(builder: (context) => AddVacinaPage(id: null,)),
+           
           );
         },
         backgroundColor: Colors.deepPurple,
-        label: Text(
+        label: const Text(
           "Registrar Dose",
           style: TextStyle(
             letterSpacing: 0,

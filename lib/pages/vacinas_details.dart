@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:minhas_vacinas/pages/update_vacina.dart';
+
 import 'package:minhas_vacinas/pages/vacinas_cadastro.dart';
 import '../repositories/vacinas_reposit.dart';
+
 import '../pages/vacinas.dart';
 import '../models/vacin.dart';
 
@@ -104,7 +106,7 @@ class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
 
                 Card(
                   child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+                    margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Table(
@@ -119,7 +121,7 @@ class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
                       TableCell(
                         child: Container(
                           color: Colors.greenAccent,
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               'Nome',
                               style: TextStyle(
@@ -133,7 +135,7 @@ class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
                       TableCell(
                         child: Container(
                           color: Colors.greenAccent,
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               'Marca',
                               style: TextStyle(
@@ -147,7 +149,7 @@ class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
                       TableCell(
                         child: Container(
                           color: Colors.greenAccent,
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               'Action',
                               style: TextStyle(
@@ -166,12 +168,12 @@ class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
                         TableCell(
                           child: Center(
                               child: Text(storedocs[i]['nome'],
-                                  style: TextStyle(fontSize: 18.0))),
+                                  style: const TextStyle(fontSize: 18.0))),
                         ),
                         TableCell(
                           child: Center(
                               child: Text(storedocs[i]['dose'],
-                                  style: TextStyle(fontSize: 18.0))),
+                                  style: const TextStyle(fontSize: 18.0))),
                         ),
                         TableCell(
                           child: Row(
@@ -187,7 +189,7 @@ class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
                                     ),
                                   )
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.edit,
                                   color: Colors.orange,
                                 ),
@@ -195,7 +197,7 @@ class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
                               IconButton(
                                 onPressed: () =>
                                     {deleteUser(storedocs[i]['id'])},
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.delete,
                                   color: Colors.red,
                                 ),
