@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:minhas_vacinas/pages/update_vacina.dart';
+import 'package:minhas_vacinas/pages/vacinas_cadastro.dart';
 import '../repositories/vacinas_reposit.dart';
 import '../pages/vacinas.dart';
 import '../models/vacin.dart';
@@ -180,9 +181,9 @@ class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
                                 onPressed: () => {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                      builder: (context) => UpdateVacinaPage(
-                                          id: storedocs[i]['id']),
+                                    /*  */MaterialPageRoute(
+                                      builder: (context) => Vacinas(
+                                          key: storedocs[i]['id']),
                                     ),
                                   )
                                 },
@@ -224,4 +225,8 @@ class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
   Widget build(BuildContext context) {
     // TODO: implement build
     throw UnimplementedError();
-  }}
+  }
+  
+  
+  
+}

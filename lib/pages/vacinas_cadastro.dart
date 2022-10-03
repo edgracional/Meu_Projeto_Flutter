@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AddVacinaPage extends StatefulWidget {
-  AddVacinaPage({Key? key}) : super(key: key);
+  AddVacinaPage({Key? key, required id}) : super(key: key);
 
   @override
   _AddVacinaPageState createState() => _AddVacinaPageState();
