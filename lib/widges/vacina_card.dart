@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*  import 'package:flutter/material.dart';
 
 class VacinaCard extends StatelessWidget {
   final String image;
@@ -47,4 +47,4 @@ class VacinaCard extends StatelessWidget {
       ),
     );
   }
-}
+}*/

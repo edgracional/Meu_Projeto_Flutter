@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
+
 class AddVacinaPage extends StatefulWidget {
 
-  
+
   const AddVacinaPage({Key? key, required id}) : super(key: key);
 
 
@@ -74,7 +75,7 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
                   controller: nomeController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please Enter Name';
+                      return 'INSIRA SEU NOME';
                     }
                     return null;
                   },
@@ -94,9 +95,7 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
                   controller: marcaController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please Enter Email';
-                    } else if (!value.contains('')) {
-                      return 'Please Enter Valid Email';
+                      return 'INSIRA A MARCA';
                     }
                     return null;
                   },
@@ -106,7 +105,6 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
                 margin: const EdgeInsets.symmetric(vertical: 10.0),
                 child: TextFormField(
                   autofocus: false,
-                  obscureText: true,
                   decoration: const InputDecoration(
                     labelText: 'Doses: ',
                     labelStyle: TextStyle(fontSize: 20.0),
@@ -117,7 +115,7 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
                   controller: dosesController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please Enter Password';
+                      return 'INSIRA A DOSES';
                     }
                     return null;
                   },
