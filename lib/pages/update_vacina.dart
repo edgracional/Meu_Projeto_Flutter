@@ -1,4 +1,6 @@
-/*import 'package:flutter/material.dart';
+/* Aproveitamentos futuros - estudo de caso
+
+import 'package:flutter/material.dart';
 import 'package:minhas_vacinas/pages/vacinas.dart';
 import 'package:minhas_vacinas/pages/vacinas_details.dart';
 

@@ -30,14 +30,9 @@ class _VacinasState extends State<Vacinas> {
     );
   }
 
-
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Minhas Vacinas'),
-      ),
       body: VacinasGridView(
         vacin: List.from(
           vacinaList.map(
@@ -59,7 +54,8 @@ class _VacinasState extends State<Vacinas> {
                     )),
           );
         },
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.blueGrey,
+        extendedPadding: EdgeInsets.all(50),
         label: const Text(
           "Registrar Dose",
           style: TextStyle(

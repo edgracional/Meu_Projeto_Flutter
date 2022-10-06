@@ -21,7 +21,6 @@ class VacinaDetailsPage extends StatefulWidget {
     required this.vacin,
   }) : super(key: key);
 
-
   @override
   _VacinaDetailsPageState createState() => _VacinaDetailsPageState();
 }
@@ -29,27 +28,33 @@ class VacinaDetailsPage extends StatefulWidget {
 class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
   static const String _title = 'Minhas Vacinas';
 
-  final tabela = DosesRepository.tabela;
+  final tabela = Doses_Repository.tabela;
 
   List<Doses> selecionadas = [];
 
-  appBarDinamica({required bool extendBodyBehindAppBar}) {
+  appBarDinamica() {
     return AppBar(
       title: Text('Doses'),
       elevation: 0,
-      backgroundColor: Colors.black45,
+      backgroundColor: Colors.blueGrey,
       foregroundColor: Colors.white,
       leading: IconButton(
         icon: Icon(Icons.arrow_back),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+                builder: (context) => Vacinas(
+                      id: null,
+                    )),
+          );
+        },
       ),
     );
   }
 
   registro(Doses doses) {
-    Navigator.push(context,MaterialPageRoute(
-      builder: (_) => Registro(doses: doses)
-      ));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (_) => Registro(doses: doses)));
   }
 
   @override
@@ -57,9 +62,7 @@ class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
     var materialApp = MaterialApp(
         title: _title,
         home: Scaffold(
-          appBar: appBarDinamica(
-            extendBodyBehindAppBar: true,
-          ),
+          appBar: appBarDinamica(),
           body: ListView.separated(
             itemBuilder: (BuildContext context, int doses) {
               return ListTile(
@@ -90,6 +93,7 @@ class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
   }
 }
 
+/*  
 class MyStatelessWidget extends StatelessWidget {
   const MyStatelessWidget({super.key});
   @override
@@ -124,4 +128,4 @@ class MyStatelessWidget extends StatelessWidget {
       ),
     );
   }
-}
+}*/

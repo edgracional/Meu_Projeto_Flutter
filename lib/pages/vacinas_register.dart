@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*  import 'package:flutter/material.dart';
 
 import '../models/vacin.dart';
 
@@ -37,13 +37,13 @@ class _VacinaRegisterPageState extends State<VacinaRegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      /*  extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text(widget.vacin.name),
+         title: Text(widget.vacin.name),
         elevation: 0,
         backgroundColor: Colors.black45,
         foregroundColor: Colors.white,
-      ),
+      ),*/
       body: Stack(
         children: [
           SizedBox(
@@ -130,4 +130,4 @@ class _VacinaRegisterPageState extends State<VacinaRegisterPage> {
       // ),
     );
   }
-}
+}*/

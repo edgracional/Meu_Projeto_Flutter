@@ -9,9 +9,12 @@ class MinhasVacinas extends StatelessWidget {
     return MaterialApp(
       title: 'Vacinas',
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
+        primarySwatch: Colors.blueGrey,
+        
       ),
-      home: const Vacinas(id: null,),
+      home: const Vacinas(
+        id: null,
+      ),
     );
   }
 }

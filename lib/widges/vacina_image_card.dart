@@ -20,25 +20,14 @@ class VacinaImageCard extends StatelessWidget {
       child: Ink.image(
         image: AssetImage(vacin.image),
         child: InkWell(
-          splashColor: Theme.of(context).primaryColor.withOpacity(.2),
-          highlightColor: Colors.white.withOpacity(.3),
+          splashColor: Theme.of(context).primaryColor.withOpacity(.5),
+          highlightColor: Colors.white.withOpacity(.1),
           onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.only(top: 10.0, right: 10),
             child: Container(
               alignment: Alignment.topRight,
               decoration: const BoxDecoration(),
-              child: ClipRRect(
-                child: Container(
-                  width: 26,
-                  height: 26,
-                  alignment: Alignment.center,
-                  color: Colors.black87,
-                  child: const Padding(
-                    padding: EdgeInsets.only(bottom: 1, left: 1),
-                  ),
-                ),
-              ),
             ),
           ),
         ),

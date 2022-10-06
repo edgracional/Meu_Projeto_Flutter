@@ -9,7 +9,6 @@ class VacinasReposit {
         id: 0,
         name: 'Doses',
         image: 'images/vacindoses.png',
-        genre: ['VACINAS'],
         description: 'Controle de vacinação Corona-Vírus',
         year: 2020,
       ),

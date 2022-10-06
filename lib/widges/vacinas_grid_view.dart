@@ -11,11 +11,11 @@ class VacinasGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(0),
       child: GridView.count(
         crossAxisCount: 1,
-        mainAxisSpacing: 35,
-        crossAxisSpacing: 35,
+        mainAxisSpacing: 20,
+        crossAxisSpacing: 20,
         childAspectRatio: 3 / 4,
         children: vacin,
       ),

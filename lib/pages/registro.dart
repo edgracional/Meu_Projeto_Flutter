@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import '../models/teste.dart';
@@ -12,6 +14,7 @@ class Registro extends StatefulWidget {
 }
 
 class _RegistroState extends State<Registro> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,27 +22,46 @@ class _RegistroState extends State<Registro> {
         title: Text(widget.doses.nome),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(30),
+        padding: const EdgeInsets.all(15),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: 30),
               child: Container(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      child: Image.asset(widget.doses.icone),
-                      width: 250,
-                    ),
-                    SizedBox(
-                      child: SizedBox(
-                        child: Text(widget.doses.valor),
-                        width: 250,
+                  children: <Widget>[
+                    Center(
+                      child: Flexible(
+                        child: Card(
+                          child: Column(
+                            children: [
+                              Container(
+                                child: SizedBox(
+                                  child: Image.asset(widget.doses.icone),
+                                  width: 350,
+                                ),
+                              ),
+                              SizedBox(
+                                child: Container(
+                                  padding: EdgeInsets.all(10),
+                                  alignment: Alignment.center,
+                                  child: SizedBox(
+                                    child: Text(
+                                      widget.doses.valor,
+                                      style: TextStyle(
+                                        fontSize: 32,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                width: 250,
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                      width: 250,
                     ),
-                    Container(width: 20),
                   ],
                 ),
               ),
