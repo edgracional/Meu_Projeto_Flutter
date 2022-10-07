@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Doses {
   String id;
   String icone;

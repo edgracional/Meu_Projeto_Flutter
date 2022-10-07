@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -28,42 +27,38 @@ class _RegistroState extends State<Registro> {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: 30),
-              child: Container(
-                child: Row(
-                  children: <Widget>[
-                    Center(
-                      child: Flexible(
-                        child: Card(
-                          child: Column(
-                            children: [
-                              Container(
+              child: Row(
+                children: <Widget>[
+                  Center(
+                    child: Flexible(
+                      child: Card(
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              width: 350,
+                              child: Image.asset(widget.doses.icone),
+                            ),
+                            SizedBox(
+                              width: 250,
+                              child: Container(
+                                padding: const EdgeInsets.all(10),
+                                alignment: Alignment.center,
                                 child: SizedBox(
-                                  child: Image.asset(widget.doses.icone),
-                                  width: 350,
-                                ),
-                              ),
-                              SizedBox(
-                                child: Container(
-                                  padding: EdgeInsets.all(10),
-                                  alignment: Alignment.center,
-                                  child: SizedBox(
-                                    child: Text(
-                                      widget.doses.valor,
-                                      style: TextStyle(
-                                        fontSize: 32,
-                                      ),
+                                  child: Text(
+                                    widget.doses.valor,
+                                    style: const TextStyle(
+                                      fontSize: 32,
                                     ),
                                   ),
                                 ),
-                                width: 250,
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             )
           ],

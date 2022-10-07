@@ -2,16 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:minhas_vacinas/models/teste.dart';
 import 'package:minhas_vacinas/pages/registro.dart';
 
-import 'package:minhas_vacinas/pages/update_vacina.dart';
 
-import 'package:minhas_vacinas/pages/vacinas_cadastro.dart';
 
-import '../repositories/vacinas_reposit.dart';
 
 import '../pages/vacinas.dart';
 import '../models/vacin.dart';
 import '../repositories/teste_repository.dart';
-import 'package:intl/intl.dart';
 
 class VacinaDetailsPage extends StatefulWidget {
   final Vacin vacin;
@@ -67,8 +63,8 @@ class VacinaDetailsPageState extends State<VacinaDetailsPage> {
             itemBuilder: (BuildContext context, int doses) {
               return ListTile(
                 leading: SizedBox(
-                  child: Image.asset(tabela[doses].icone),
                   width: 50,
+                  child: Image.asset(tabela[doses].icone),
                 ),
                 title: Text(tabela[doses].nome),
                 trailing: Text(tabela[doses].valor.toString()),

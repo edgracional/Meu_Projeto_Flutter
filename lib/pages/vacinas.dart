@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:minhas_vacinas/models/vacin.dart';
-import 'package:minhas_vacinas/pages/registro.dart';
 import 'package:minhas_vacinas/pages/vacinas_cadastro.dart';
 import 'package:minhas_vacinas/pages/vacinas_details.dart';
 import 'package:minhas_vacinas/repositories/vacinas_reposit.dart';
@@ -131,13 +130,13 @@ class _VacinasState extends State<Vacinas> {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-                builder: (context) => AddVacinaPage(
+                builder: (context) => const AddVacinaPage(
                       id: null,
                     )),
           );
         },
         backgroundColor: Colors.blueGrey,
-        extendedPadding: EdgeInsets.all(50),
+        extendedPadding: const EdgeInsets.all(50),
         label: const Text(
           "Registrar Dose",
           style: TextStyle(

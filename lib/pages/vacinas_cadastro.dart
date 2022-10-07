@@ -6,10 +6,10 @@ class AddVacinaPage extends StatefulWidget {
   const AddVacinaPage({Key? key, required id}) : super(key: key);
 
   @override
-  _AddVacinaPageState createState() => _AddVacinaPageState();
+  AddVacinaPageState createState() => AddVacinaPageState();
 }
 
-class _AddVacinaPageState extends State<AddVacinaPage> {
+class AddVacinaPageState extends State<AddVacinaPage> {
   final _formKey = GlobalKey<FormState>();
   List<String> items = ['1 dose', '2 dose', '3 dose', '4 dose', '5 dose'];
   String? selectedItem = "1 dose";
@@ -42,7 +42,7 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add Vacina"),
+        title: const Text("Adicionar Vacina"),
       ),
       body: Form(
         key: _formKey,
@@ -131,23 +131,23 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
                       if (_formKey.currentState!.validate()) {
                         setState(() {
                           //nome = nomeController.text;
-                          String marca = marcaController.text;
-                          String doses = dosesController.text;
-                          final Doses vacina = Doses(
-                            id: DateTime.now().toString(),
-                            icone: "images/pifs.png",
-                            nome: marca,
-                            valor: doses,
-                          );
-                          //Add Vacin to list
-                          Doses_Repository.addVacina(vacina);
                           //addUser();
                           clearText();
                         });
+                        String marca = marcaController.text;
+                        String doses = dosesController.text;
+                        final Doses vacina = Doses(
+                          id: DateTime.now().toString(),
+                          icone: "images/pifs.png",
+                          nome: marca,
+                          valor: doses,
+                        );
+                        //Add Vacin to list
+                        Doses_Repository.addVacina(vacina);
                       }
                     },
                     child: const Text(
-                      'Register',
+                      'Registro',
                       style: TextStyle(fontSize: 18.0),
                     ),
                   ),
@@ -155,7 +155,7 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
                     onPressed: () => {clearText()},
                     style: ElevatedButton.styleFrom(backgroundColor: Colors.blueGrey),
                     child: const Text(
-                      'Reset',
+                      'Resetar',
                       style: TextStyle(fontSize: 18.0),
                     ),
                   ),
