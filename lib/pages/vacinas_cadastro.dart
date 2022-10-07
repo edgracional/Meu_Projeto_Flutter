@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:minhas_vacinas/repositories/teste_repository.dart';
+import '../models/teste.dart';
 
 class AddVacinaPage extends StatefulWidget {
   const AddVacinaPage({Key? key, required id}) : super(key: key);
@@ -129,8 +131,16 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
                       if (_formKey.currentState!.validate()) {
                         setState(() {
                           //nome = nomeController.text;
-                          marca = marcaController.text;
-                          doses = dosesController.text;
+                          String marca = marcaController.text;
+                          String doses = dosesController.text;
+                          final Doses vacina = Doses(
+                            id: DateTime.now().toString(),
+                            icone: "images/pifs.png",
+                            nome: marca,
+                            valor: doses,
+                          );
+                          //Add Vacin to list
+                          Doses_Repository.addVacina(vacina);
                           //addUser();
                           clearText();
                         });
@@ -143,7 +153,7 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
                   ),
                   ElevatedButton(
                     onPressed: () => {clearText()},
-                    style: ElevatedButton.styleFrom(primary: Colors.blueGrey),
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.blueGrey),
                     child: const Text(
                       'Reset',
                       style: TextStyle(fontSize: 18.0),

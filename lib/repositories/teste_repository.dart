@@ -34,4 +34,8 @@ class Doses_Repository extends ChangeNotifier {
       valor: 'Primeira dose',
     ),
   ];
+
+  static addVacina (Doses dose) async {
+    tabela.add(dose);
+  }
 }
