@@ -22,10 +22,10 @@ class VacinaDetailsPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _VacinaDetailsPageState createState() => _VacinaDetailsPageState();
+  VacinaDetailsPageState createState() => VacinaDetailsPageState();
 }
 
-class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
+class VacinaDetailsPageState extends State<VacinaDetailsPage> {
   static const String _title = 'Minhas Vacinas';
 
   final tabela = Doses_Repository.tabela;
@@ -34,16 +34,16 @@ class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
 
   appBarDinamica() {
     return AppBar(
-      title: Text('Doses'),
+      title: const Text('Dosess'),
       elevation: 0,
       backgroundColor: Colors.blueGrey,
       foregroundColor: Colors.white,
       leading: IconButton(
-        icon: Icon(Icons.arrow_back),
+        icon: const Icon(Icons.arrow_back),
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-                builder: (context) => Vacinas(
+                builder: (context) => const Vacinas(
                       id: null,
                     )),
           );
@@ -84,8 +84,8 @@ class _VacinaDetailsPageState extends State<VacinaDetailsPage> {
                 onTap: () => registro(tabela[doses]),
               );
             },
-            padding: EdgeInsets.all(16),
-            separatorBuilder: (_, __) => Divider(),
+            padding: const EdgeInsets.all(16),
+            separatorBuilder: (_, __) => const Divider(),
             itemCount: tabela.length,
           ),
         ));
