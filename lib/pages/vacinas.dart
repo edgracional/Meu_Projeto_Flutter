@@ -60,7 +60,7 @@ class _VacinasState extends State<Vacinas> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => VacinaDetailsPage(vacin: null,)),
+                  MaterialPageRoute(builder: (context) => const MinhasVacinas()),
                 );
               },
             ),
