@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'dart:ui' show lerpDouble;
+import 'package:flutter/widgets.dart';
+
 class AddVacinaPage extends StatefulWidget {
   const AddVacinaPage({Key? key, required id}) : super(key: key);
 
@@ -18,23 +21,53 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
   // Create a text controller and use it to retrieve the current value
   // of the TextField.
   //final nomeController = TextEditingController();
-  final marcaController = TextEditingController();
+  final localController = TextEditingController();
   final dosesController = TextEditingController();
 
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
     //nomeController.dispose();
-    marcaController.dispose();
+    localController.dispose();
     dosesController.dispose();
     super.dispose();
   }
 
   clearText() {
     //nomeController.clear();
-    marcaController.clear();
+    localController.clear();
     dosesController.clear();
   }
+
+  String? _Selected;
+
+  List<Map> _myJson = [
+    {
+      'id': 1,
+      'image': 'images/aztra.png',
+      'name': 'Aztrazeneca',
+    },
+    {
+      'id': 2,
+      'image': 'images/coronav.png',
+      'name': 'Coronavac',
+    },
+    {
+      'id': 3,
+      'image': 'images/johsson.png',
+      'name': 'Johnson&Johnsson',
+    },
+    {
+      'id': 4,
+      'image': 'images/moder.png',
+      'name': 'Moderna',
+    },
+    {
+      'id': 5,
+      'image': 'images/pifs.png',
+      'name': 'Pifzer',
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +103,54 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
               ),*/
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 10.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(width: 1, color: Colors.grey),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                          child: DropdownButtonHideUnderline(
+                        child: ButtonTheme(
+                          alignedDropdown: true,
+                          child: DropdownButton<String>(
+                            hint: Text('Selecionar Vacina'),
+                            value: _Selected,
+                            onChanged: (newValue) {
+                              setState(() {
+                                _Selected = newValue;
+                              });
+                            },
+                            items: _myJson.map((e) {
+                              return DropdownMenuItem<String>(
+                                  value: e['name'],
+                                  child: Row(
+                                    children: [
+                                      Image.asset(e['image'], width: 25),
+                                      Container(
+                                        margin: EdgeInsets.only(left: 10),
+                                        child: Text(e['name']),
+                                      )
+                                    ],
+                                  ));
+                            }).toList(),
+                          ),
+                        ),
+                      ))
+                    ],
+                  ),
+                  /*  controller: marcaController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'INSIRA A MARCA';
+                    }
+                    return null;
+                  },*/
+                ),
+              ),
+              /*   Container(
+                margin: const EdgeInsets.symmetric(vertical: 10.0),
                 child: TextFormField(
                   autofocus: false,
                   decoration: const InputDecoration(
@@ -83,6 +164,26 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'INSIRA A MARCA';
+                    }
+                    return null;
+                  },
+                ),
+              ),*/
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 10.0),
+                child: TextFormField(
+                  autofocus: false,
+                  decoration: const InputDecoration(
+                    labelText: 'Local de Vacinação: ',
+                    labelStyle: TextStyle(fontSize: 20.0),
+                    border: OutlineInputBorder(),
+                    errorStyle:
+                        TextStyle(color: Colors.redAccent, fontSize: 15),
+                  ),
+                  controller: localController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'INSIRA O LOCAL DE VACINAÇÃO';
                     }
                     return null;
                   },
@@ -108,18 +209,6 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
                   },
                 ),
               ),
-              /*  Container(
-                margin: const EdgeInsets.symmetric(vertical: 10.0),
-                child: DropdownButton<String>(
-                  value: selectedItem,
-                  items: items
-                      .map((item) => DropdownMenuItem<String>(
-                            child: Text(item, style: TextStyle(fontSize: 25)),
-                          ))
-                      .toList(),
-                  onChanged: (item) => setState(() => selectedItem),
-                ),
-              ),*/
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -129,7 +218,7 @@ class _AddVacinaPageState extends State<AddVacinaPage> {
                       if (_formKey.currentState!.validate()) {
                         setState(() {
                           //nome = nomeController.text;
-                          marca = marcaController.text;
+                          marca = localController.text;
                           doses = dosesController.text;
                           //addUser();
                           clearText();
