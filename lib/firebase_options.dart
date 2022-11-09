@@ -49,6 +49,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '501761619525',
     projectId: 'vaccinas-f2caa',
     authDomain: 'vaccinas-f2caa.firebaseapp.com',
+    databaseURL: 'https://vaccinas-f2caa-default-rtdb.firebaseio.com',
     storageBucket: 'vaccinas-f2caa.appspot.com',
     measurementId: 'G-XW4D2GDGZE',
   );
@@ -58,6 +59,7 @@ class DefaultFirebaseOptions {
     appId: '1:501761619525:android:a9b3554a202cd26e0f952c',
     messagingSenderId: '501761619525',
     projectId: 'vaccinas-f2caa',
+    databaseURL: 'https://vaccinas-f2caa-default-rtdb.firebaseio.com',
     storageBucket: 'vaccinas-f2caa.appspot.com',
   );
 
@@ -66,6 +68,7 @@ class DefaultFirebaseOptions {
     appId: '1:501761619525:ios:64152c5e85c44d620f952c',
     messagingSenderId: '501761619525',
     projectId: 'vaccinas-f2caa',
+    databaseURL: 'https://vaccinas-f2caa-default-rtdb.firebaseio.com',
     storageBucket: 'vaccinas-f2caa.appspot.com',
     iosClientId: '501761619525-obugh21fhrsrc0u0r1nam7fru4eqtsi3.apps.googleusercontent.com',
     iosBundleId: 'com.example.minhasVacinas',
@@ -76,6 +79,7 @@ class DefaultFirebaseOptions {
     appId: '1:501761619525:ios:64152c5e85c44d620f952c',
     messagingSenderId: '501761619525',
     projectId: 'vaccinas-f2caa',
+    databaseURL: 'https://vaccinas-f2caa-default-rtdb.firebaseio.com',
     storageBucket: 'vaccinas-f2caa.appspot.com',
     iosClientId: '501761619525-obugh21fhrsrc0u0r1nam7fru4eqtsi3.apps.googleusercontent.com',
     iosBundleId: 'com.example.minhasVacinas',

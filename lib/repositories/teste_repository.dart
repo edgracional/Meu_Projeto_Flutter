@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:minhas_vacinas/models/teste.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:minhas_vacinas/pages/vacinas_cadastro.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Doses_Repository extends ChangeNotifier {
   static List<Doses> tabela = [
@@ -35,7 +39,6 @@ class Doses_Repository extends ChangeNotifier {
     ),
   ];
 
-  static addVacina (Doses dose) async {
-    tabela.add(dose);
-  }
+  // Method to read doses from vacines in firebase realtime database
 }
+

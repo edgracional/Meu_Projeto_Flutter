@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:minhas_vacinas/repositories/teste_repository.dart';
 import '../models/teste.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
+
+FirebaseDatabase database = FirebaseDatabase.instance;
+DatabaseReference ref = FirebaseDatabase.instance.ref();
+
 
 class AddVacinaPage extends StatefulWidget {
   const AddVacinaPage({Key? key, required id}) : super(key: key);
@@ -126,7 +132,8 @@ class AddVacinaPageState extends State<AddVacinaPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
+                      // Doses_Repository.getVacinas();
                       // Validate returns true if the form is valid, otherwise false.
                       if (_formKey.currentState!.validate()) {
                         setState(() {
@@ -143,7 +150,14 @@ class AddVacinaPageState extends State<AddVacinaPage> {
                           valor: doses,
                         );
                         //Add Vacin to list
-                        Doses_Repository.addVacina(vacina);
+                        //Doses_Repository.addVacina(vacina);
+                        //Add Vacina to realtime database DatabaseReference
+                        ref.child("Vacinas").push().set({
+                          "id": vacina.id,
+                          "icone": vacina.icone,
+                          "nome": vacina.nome,
+                          "valor": vacina.valor,
+                        });
                       }
                     },
                     child: const Text(

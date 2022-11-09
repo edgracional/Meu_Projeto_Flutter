@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "501761619525",
+    "firebase_url": "https://vaccinas-f2caa-default-rtdb.firebaseio.com",
     "project_id": "vaccinas-f2caa",
     "storage_bucket": "vaccinas-f2caa.appspot.com"
   },
