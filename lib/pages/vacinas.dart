@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:minhas_vacinas/models/vacin.dart';
 import 'package:minhas_vacinas/pages/vacinas_cadastro.dart';
-import 'package:minhas_vacinas/pages/vacinas_details.dart';
+import 'package:minhas_vacinas/provider/vacinas_provider.dart';
 import 'package:minhas_vacinas/repositories/vacinas_reposit.dart';
-import 'package:minhas_vacinas/widges/vacina_image_card.dart';
-import 'package:minhas_vacinas/widges/vacinas_grid_view.dart';
+import 'package:provider/provider.dart';
+import 'package:minhas_vacinas/pages/showdetails.dart';
+import 'package:minhas_vacinas/pages/home.dart';
 
 import '../minhas_vacinas.dart';
 
@@ -14,26 +15,45 @@ class Vacinas extends StatefulWidget {
   @override
   State<Vacinas> createState() => _VacinasState();
 
-  static doc(id) {}
+  // static doc(id) {}
 }
 
 class _VacinasState extends State<Vacinas> {
   late final List<Vacin> vacinaList;
-
+  late VacinasProvider vacinasProvider;
   @override
   void initState() {
     super.initState();
     vacinaList = VacinasReposit().vacina;
+
+    /// for loading data as soon as the page loads
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      vacinasProvider = Provider.of<VacinasProvider>(context, listen: false);
+      await vacinasProvider.getVacinasList();
+    });
   }
 
-  openDetails(Vacin vacin) {
+  /*openDetails(Vacin vacin) {
     Navigator.of(context).push(
       MaterialPageRoute(builder: (_) => VacinaDetailsPage(vacin: vacin)),
     );
+  }*/
+
+  //Open details from ShowDetails
+  openDetails(Vacin vacin) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => ShowDetails(vacin: vacin)),
+    );
   }
+
+  /*registro(Doses doses) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (_) => Registro(vacin: vacin)));
+  }*/
 
   @override
   Widget build(BuildContext context) {
+    // print("object");
     return Scaffold(
       appBar: AppBar(
         title: const Text('Minhas Vacinas'),
@@ -42,7 +62,9 @@ class _VacinasState extends State<Vacinas> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            const DrawerHeader(
+            const SizedBox(
+              height: 100,
+            child: DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.blueGrey,
               ),
@@ -54,96 +76,70 @@ class _VacinasState extends State<Vacinas> {
                 ),
               ),
             ),
+            ),
+            // Home list tile linking to home.dart
             ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text('Home'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const Home(id: null,)),
+                );                
+              },
+            ),
+            ListTile(
+              // Health icon
+              leading: const Icon(Icons.medical_services),
               title: const Text('Vacinas'),
               onTap: () {
                 Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MinhasVacinas()),
-                );
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MinhasVacinas()),
+                  );
               },
             ),
             ListTile(
-              title: const Text('Doses'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MinhasVacinas()),
-                );
-              },
-            ),
-            ListTile(
+              leading: const Icon(Icons.add),
               title: const Text('Registro'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const AddVacinaPage(id: null,)),
+                  MaterialPageRoute(
+                      builder: (context) => const AddVacinaPage(
+                            id: null,
+                          )),
                 );
               },
             ),
           ],
         ),
-        /*child: ListView(
-          padding: EdgeInsets.zero,
-
-          children: const <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text(
-                'Drawer Header',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.message),
-              title: Text('Messages'),
-            ),
-            ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text('Profile'),
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
-            ),
-          ],
-        ),*/
       ),
-      body: VacinasGridView(
-        vacin: List.from(
-          vacinaList.map(
-            (Vacin vacin) => VacinaImageCard(
-              image: vacin.image,
-              onTap: () => openDetails(vacin),
-              vacin: (vacin),
-            ),
-          ),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-                builder: (context) => const AddVacinaPage(
-                      id: null,
-                    )),
-          );
-        },
-        backgroundColor: Colors.blueGrey,
-        extendedPadding: const EdgeInsets.all(50),
-        label: const Text(
-          "Registrar Dose",
-          style: TextStyle(
-            letterSpacing: 0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+      body: Consumer<VacinasProvider>(
+        builder: (context, value, child) => value.isBusy
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : value.vacinList.isEmpty
+                ? const Center(
+                    child: Text("No Data found"),
+                  )
+                : ListView.builder(
+                    itemCount: value.vacinList.length,
+                    itemBuilder: (context, index) => ListTile(
+                      contentPadding: const EdgeInsets.all(10),
+                      leading: Image.asset(value.vacinList[index].icone),
+                      title: Text(
+                        value.vacinList[index].nome!.substring(0, 1).toUpperCase() +
+                            value.vacinList[index].nome!.substring(1),
+                      ),
+                      // ontap
+                      onTap: () => openDetails(value.vacinList[index]),
+                      // Ontap
+                    ),
+                  ),
       ),
     );
   }

@@ -6,11 +6,11 @@ class VacinasReposit {
   VacinasReposit() {
     vacina = [
       Vacin(
-        id: 0,
+        id: "0",
         name: 'Doses',
-        image: 'images/vacindoses.png',
-        description: 'Controle de vacinação Corona-Vírus',
-        year: 2020,
+        icone: 'images/vacindoses.png',
+        nome: 'Controle de vacinação Corona-Vírus',
+        valor: DateTime.now().toIso8601String(),
       ),
 
       /* 

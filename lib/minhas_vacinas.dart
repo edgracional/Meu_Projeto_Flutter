@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:minhas_vacinas/provider/vacinas_provider.dart';
+import 'package:provider/provider.dart';
 import 'pages/vacinas.dart';
 
 class MinhasVacinas extends StatelessWidget {
@@ -10,10 +12,12 @@ class MinhasVacinas extends StatelessWidget {
       title: 'Vacinas',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
-        
       ),
-      home: const Vacinas(
-        id: null,
+      home: MultiProvider(
+        providers: [ChangeNotifierProvider(create: (_) => VacinasProvider())],
+        child: const Vacinas(
+          id: null,
+        ),
       ),
     );
   }

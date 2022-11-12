@@ -18,7 +18,7 @@ class VacinaImageCard extends StatelessWidget {
       elevation: 6.0,
       clipBehavior: Clip.hardEdge,
       child: Ink.image(
-        image: AssetImage(vacin.image),
+        image: AssetImage(vacin.icone),
         child: InkWell(
           splashColor: Theme.of(context).primaryColor.withOpacity(.5),
           highlightColor: Colors.white.withOpacity(.1),

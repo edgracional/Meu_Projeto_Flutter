@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:minhas_vacinas/models/teste.dart';
 import 'package:minhas_vacinas/pages/registro.dart';
-
-
-
-
 import '../pages/vacinas.dart';
 import '../models/vacin.dart';
 import '../repositories/teste_repository.dart';

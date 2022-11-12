@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:minhas_vacinas/repositories/teste_repository.dart';
 import '../models/teste.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 FirebaseDatabase database = FirebaseDatabase.instance;
@@ -98,9 +96,10 @@ class AddVacinaPageState extends State<AddVacinaPage> {
               ),
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 10.0),
-                child: TextFormField(
+                /*child: TextFormField(
                   autofocus: false,
                   decoration: const InputDecoration(
+
                     labelText: 'Doses: ',
                     labelStyle: TextStyle(fontSize: 20.0),
                     border: OutlineInputBorder(),
@@ -114,8 +113,30 @@ class AddVacinaPageState extends State<AddVacinaPage> {
                     }
                     return null;
                   },
-                ),
-              ),
+                ),*/
+                // Doses dropdown with dosesController
+                child: DropdownButtonFormField<String>(
+                  decoration: const InputDecoration(
+                    labelText: 'Doses: ',
+                    labelStyle: TextStyle(fontSize: 20.0),
+                    border: OutlineInputBorder(),
+                    errorStyle:
+                        TextStyle(color: Colors.redAccent, fontSize: 15),
+                  ),
+                  value: selectedItem,
+                  items: items.map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (String? value) {
+                    setState(() {
+                      selectedItem = value;
+                      dosesController.text = value!;
+                    });
+                  },
+                ),),
               /*  Container(
                 margin: const EdgeInsets.symmetric(vertical: 10.0),
                 child: DropdownButton<String>(
@@ -135,14 +156,16 @@ class AddVacinaPageState extends State<AddVacinaPage> {
                     onPressed: () async {
                       // Doses_Repository.getVacinas();
                       // Validate returns true if the form is valid, otherwise false.
+                      String marca = marcaController.text;
+                      String doses = dosesController.text;
                       if (_formKey.currentState!.validate()) {
                         setState(() {
                           //nome = nomeController.text;
+                          marca = marcaController.text;
+                          doses = dosesController.text;
                           //addUser();
                           clearText();
                         });
-                        String marca = marcaController.text;
-                        String doses = dosesController.text;
                         final Doses vacina = Doses(
                           id: DateTime.now().toString(),
                           icone: "images/pifs.png",
