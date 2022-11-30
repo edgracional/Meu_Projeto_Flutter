@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pages/vacinas.dart';
+import 'package:minhas_vacinas/pages/vacinas.dart';
 
 class MinhasVacinas extends StatelessWidget {
   const MinhasVacinas({Key? key}) : super(key: key);
@@ -8,9 +8,9 @@ class MinhasVacinas extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Vacinas',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
-        
       ),
       home: const Vacinas(
         id: null,

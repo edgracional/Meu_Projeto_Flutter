@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:minhas_vacinas/app/modules/dados/dados_page.dart';
 import 'package:minhas_vacinas/models/vacin.dart';
 import 'package:minhas_vacinas/pages/vacinas_cadastro.dart';
 import 'package:minhas_vacinas/pages/vacinas_details.dart';
@@ -49,13 +50,14 @@ class _VacinasState extends State<Vacinas> {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-                builder: (context) => AddVacinaPage(
-                      id: null,
-                    )),
+              builder: (context) => const AddVacinaPage(
+                id: null,
+              ),
+            ),
           );
         },
         backgroundColor: Colors.blueGrey,
-        extendedPadding: EdgeInsets.all(50),
+        extendedPadding: const EdgeInsets.all(50),
         label: const Text(
           "Registrar Dose",
           style: TextStyle(
@@ -64,6 +66,15 @@ class _VacinasState extends State<Vacinas> {
           ),
         ),
       ),
+      bottomNavigationBar: ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => DadosPage(),
+              ),
+            );
+          },
+          child: const Text('Dados Covid')),
     );
   }
 }
