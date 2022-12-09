@@ -3,7 +3,9 @@ import 'package:minhas_vacinas/provider/vacinas_provider.dart';
 import 'package:provider/provider.dart';
 import 'pages/vacinas.dart';
 
-class MinhasVacinas extends StatelessWidget {
+import 'pages/biometric.dart';
+
+/*class MinhasVacinas extends StatelessWidget {
   const MinhasVacinas({Key? key}) : super(key: key);
 
   @override
@@ -21,4 +23,24 @@ class MinhasVacinas extends StatelessWidget {
       ),
     );
   }
+}*/
+
+// Create MyHomePage from biometric.dart
+
+class MinhasVacinas extends StatelessWidget {
+  const MinhasVacinas({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Fingerprint Authentication',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyApp(),
+    );
+  }
 }
+
+

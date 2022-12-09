@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import '../models/vacin.dart';
+
 
 // Page to show details of a vacin with a name and icon in the center
 class ShowDetails extends StatelessWidget {
@@ -30,6 +32,13 @@ class ShowDetails extends StatelessWidget {
             Text(
               vacin.valor ?? '',
               style: const TextStyle(fontSize: 30),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Share.share(
+                    '#Vacinado: ${vacin.nome} - ${vacin.valor}');
+              },
+              child: const Text('Share'),
             ),
           ],
         ),
