@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:minhas_vacinas/provider/vacinas_provider.dart';
-import 'package:provider/provider.dart';
-import 'pages/vacinas.dart';
 
 import 'pages/biometric.dart';
 

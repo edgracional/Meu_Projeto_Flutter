@@ -3,10 +3,10 @@ import 'package:minhas_vacinas/pages/vacinas.dart';
 import 'package:minhas_vacinas/provider/vacinas_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,6 @@ void main() {
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
-
   @override
   State<MyApp> createState() => _MyAppState();
 }
@@ -109,7 +108,8 @@ class _MyAppState extends State<MyApp> {
       });
       authenticated = await auth.authenticate(
         localizedReason:
-        'Scan your fingerprint (or face or whatever) to authenticate',
+        'Use biometria para desbloquear o app'
+            '',
         options: const AuthenticationOptions(
           stickyAuth: true,
           biometricOnly: true,
@@ -117,7 +117,7 @@ class _MyAppState extends State<MyApp> {
       );
       setState(() {
         _isAuthenticating = false;
-        _authorized = 'Authenticating';
+        _authorized = 'Autenticando';
       });
     } on PlatformException catch (e) {
       setState(() {
@@ -146,7 +146,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Minhas Vacinas'),
         ),
         body: ListView(
           padding: const EdgeInsets.only(top: 30),
@@ -157,9 +157,9 @@ class _MyAppState extends State<MyApp> {
                 if (_supportState == _SupportState.unknown)
                   const CircularProgressIndicator()
                 else if (_supportState == _SupportState.supported)
-                  const Text('This device is supported')
+                  const Text('Autentique com a sua digital')
                 else
-                  const Text('This device is not supported'),
+                  const Text('É necessário digital para utilizar o app'),
                 const Divider(height: 500),
                 // Big fingerprint icon in the middle of the screen that is a button
                 // that triggers the authentication flow.

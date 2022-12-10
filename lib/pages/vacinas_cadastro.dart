@@ -26,6 +26,7 @@ class AddVacinaPageState extends State<AddVacinaPage> {
   //final nomeController = TextEditingController();
   final marcaController = TextEditingController();
   final dosesController = TextEditingController();
+  final nomeController = TextEditingController();
 
   @override
   void dispose() {
@@ -33,6 +34,7 @@ class AddVacinaPageState extends State<AddVacinaPage> {
     //nomeController.dispose();
     marcaController.dispose();
     dosesController.dispose();
+    nomeController.dispose();
     super.dispose();
   }
 
@@ -40,6 +42,7 @@ class AddVacinaPageState extends State<AddVacinaPage> {
     //nomeController.clear();
     marcaController.clear();
     dosesController.clear();
+    nomeController.clear();
   }
 
   @override
@@ -54,12 +57,12 @@ class AddVacinaPageState extends State<AddVacinaPage> {
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
           child: ListView(
             children: [
-              /*   Container(
+              Container(
                 margin: const EdgeInsets.symmetric(vertical: 10.0),
                 child: TextFormField(
                   autofocus: false,
                   decoration: const InputDecoration(
-                    labelText: 'Name: ',
+                    labelText: 'Nome: ',
                     labelStyle: TextStyle(fontSize: 20.0),
                     border: OutlineInputBorder(),
                     errorStyle:
@@ -73,7 +76,7 @@ class AddVacinaPageState extends State<AddVacinaPage> {
                     return null;
                   },
                 ),
-              ),*/
+              ),
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 10.0),
                 child: TextFormField(
@@ -158,11 +161,13 @@ class AddVacinaPageState extends State<AddVacinaPage> {
                       // Validate returns true if the form is valid, otherwise false.
                       String marca = marcaController.text;
                       String doses = dosesController.text;
+                      String nome = nomeController.text;
                       if (_formKey.currentState!.validate()) {
                         setState(() {
                           //nome = nomeController.text;
                           marca = marcaController.text;
                           doses = dosesController.text;
+                          nome = nomeController.text;
                           //addUser();
                           clearText();
                         });
@@ -175,7 +180,7 @@ class AddVacinaPageState extends State<AddVacinaPage> {
                         //Add Vacin to list
                         //Doses_Repository.addVacina(vacina);
                         //Add Vacina to realtime database DatabaseReference
-                        ref.child("Vacinas").push().set({
+                        ref.child(nome).push().set({
                           "id": vacina.id,
                           "icone": vacina.icone,
                           "nome": vacina.nome,

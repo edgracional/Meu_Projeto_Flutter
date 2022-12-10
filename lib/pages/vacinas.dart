@@ -8,6 +8,7 @@ import 'package:minhas_vacinas/pages/showdetails.dart';
 import 'package:minhas_vacinas/pages/home.dart';
 
 import '../minhas_vacinas.dart';
+import 'apipage.dart';
 
 class Vacinas extends StatefulWidget {
   const Vacinas({Key? key, required id}) : super(key: key);
@@ -110,6 +111,18 @@ class _VacinasState extends State<Vacinas> {
                   MaterialPageRoute(
                       builder: (context) => const AddVacinaPage(
                             id: null,
+                          )),
+                );
+              },
+            ),
+                        ListTile(
+              leading: const Icon(Icons.web),
+              title: const Text('API'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ApiPage (
                           )),
                 );
               },

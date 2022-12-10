@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:minhas_vacinas/minhas_vacinas.dart';
 import 'package:minhas_vacinas/models/vacin.dart';
+import 'package:minhas_vacinas/pages/apipage.dart';
 import 'package:minhas_vacinas/pages/vacinas_cadastro.dart';
 import 'package:minhas_vacinas/repositories/vacinas_reposit.dart';
 import 'package:minhas_vacinas/widges/vacina_image_card.dart';
 import 'package:minhas_vacinas/widges/vacinas_grid_view.dart';
+
 
 class Home extends StatefulWidget {
   const Home({Key? key, required id}) : super(key: key);
@@ -92,6 +94,18 @@ class _VacinasState extends State<Home> {
     );
     },
     ),
+      ListTile(
+              leading: const Icon(Icons.web),
+              title: const Text('API'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ApiPage (
+                          )),
+                );
+              },
+            ),
     ],
     ),
     ),
