@@ -38,7 +38,7 @@ class ShowDetails extends StatelessWidget {
                 Share.share(
                     '#Vacinado: ${vacin.nome} - ${vacin.valor}');
               },
-              child: const Text('Share'),
+              child: const Text('Compartilhar'),
             ),
           ],
         ),

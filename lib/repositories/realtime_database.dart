@@ -1,6 +1,11 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:minhas_vacinas/Utils/object_utils.dart';
 import 'package:minhas_vacinas/models/vacin.dart';
+import 'dart:io';
+import 'dart:async';
+
+
+//String vacinaPath = File('name.txt').readAsString() as String;
 
 const String vacinaPath = "Vacinas";
 

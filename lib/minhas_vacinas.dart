@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'pages/biometric.dart';
 
 /*class MinhasVacinas extends StatelessWidget {
